@@ -132,6 +132,7 @@ public class Menu extends javax.swing.JFrame {
         GuardarDisponibilidad = new javax.swing.JButton();
         ModificarDisponibilidad = new javax.swing.JButton();
         BorrarDisponibilidad = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
         PanelArs = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -256,7 +257,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(BotonDiponibilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonTurno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(RegistroUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+            .addComponent(RegistroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 149, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1034,6 +1035,8 @@ public class Menu extends javax.swing.JFrame {
         BorrarDisponibilidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
         BorrarDisponibilidad.setText("Borrar");
 
+        jLabel42.setText("Registrar Nuevo Paciente");
+
         javax.swing.GroupLayout PanelDisponibilidadLayout = new javax.swing.GroupLayout(PanelDisponibilidad);
         PanelDisponibilidad.setLayout(PanelDisponibilidadLayout);
         PanelDisponibilidadLayout.setHorizontalGroup(
@@ -1085,15 +1088,20 @@ public class Menu extends javax.swing.JFrame {
                                 .addGroup(PanelDisponibilidadLayout.createSequentialGroup()
                                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ValorDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(660, Short.MAX_VALUE))
+                                    .addComponent(ValorDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(PanelDisponibilidadLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jLabel42)))
+                .addContainerGap(657, Short.MAX_VALUE))
         );
         PanelDisponibilidadLayout.setVerticalGroup(
             PanelDisponibilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDisponibilidadLayout.createSequentialGroup()
                 .addGroup(PanelDisponibilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDisponibilidadLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addContainerGap()
+                        .addComponent(jLabel42)
+                        .addGap(77, 77, 77)
                         .addGroup(PanelDisponibilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CodigoDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(FechaDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1816,6 +1824,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;

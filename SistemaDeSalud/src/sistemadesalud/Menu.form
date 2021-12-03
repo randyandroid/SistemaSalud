@@ -245,32 +245,32 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1356" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1367" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PanelArs" pref="1344" max="32767" attributes="0"/>
+                      <Component id="PanelArs" pref="1355" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PanelTurno" pref="1344" max="32767" attributes="0"/>
+                      <Component id="PanelTurno" pref="1355" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="PanelMedico" pref="1344" max="32767" attributes="0"/>
+                      <Component id="PanelMedico" pref="1355" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Especialidad" pref="1344" max="32767" attributes="0"/>
+                      <Component id="Especialidad" pref="1355" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -284,7 +284,7 @@
               <Group type="103" rootIndex="6" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="PanelDisponibilidad" max="32767" attributes="0"/>
+                      <Component id="PanelDisponibilidad" pref="1343" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2117,6 +2117,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarArsActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ModificarArs">
               <Properties>

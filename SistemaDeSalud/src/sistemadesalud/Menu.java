@@ -19,11 +19,11 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
     
 public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
-    public static final String USERNAME = "root";
-    public static final String PASSWORD = "123456";
+public static final String USERNAME = "root";
+public static final String PASSWORD = "123456";
     
-    PreparedStatement ps;
-     ResultSet Res;
+PreparedStatement ps;
+ResultSet Res;
     
      
     
@@ -51,10 +51,26 @@ public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
     }//fin metodo getconnection
     
     
-    
+    public void Limpiar(){
+        
+         CodigoPaciente.setText(null);
+         CedulaPaciente.setText(null);
+         NssPaciente.setText(null);
+         NombrePaciente.setText(null);
+         ApellidoPaciente.setText(null);
+         TelefonoPaciente.setText(null);
+         FechaPaciente.setText(null);
+         HistorialPaciente.setText(null);
+         DireccionPaciente.setText(null);
+         EmegenciaPaciente.setText(null);
+         OcupacionPaciente.setText(null);
+         
+        
+    }
 
     public Menu() {
         initComponents();
+        TxtId.setVisible(false);
     }
 
     /**
@@ -1271,6 +1287,11 @@ public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
 
         GuardarArs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         GuardarArs.setText("Guardar");
+        GuardarArs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarArsActionPerformed(evt);
+            }
+        });
 
         ModificarArs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Modificar.png"))); // NOI18N
         ModificarArs.setText("Modificar");
@@ -1451,26 +1472,26 @@ public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1356, Short.MAX_VALUE)
+            .addGap(0, 1367, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(PanelArs, javax.swing.GroupLayout.DEFAULT_SIZE, 1344, Short.MAX_VALUE)
+                    .addComponent(PanelArs, javax.swing.GroupLayout.DEFAULT_SIZE, 1355, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(PanelTurno, javax.swing.GroupLayout.DEFAULT_SIZE, 1344, Short.MAX_VALUE)
+                    .addComponent(PanelTurno, javax.swing.GroupLayout.DEFAULT_SIZE, 1355, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(PanelMedico, javax.swing.GroupLayout.DEFAULT_SIZE, 1344, Short.MAX_VALUE)
+                    .addComponent(PanelMedico, javax.swing.GroupLayout.DEFAULT_SIZE, 1355, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(Especialidad, javax.swing.GroupLayout.DEFAULT_SIZE, 1344, Short.MAX_VALUE)
+                    .addComponent(Especialidad, javax.swing.GroupLayout.DEFAULT_SIZE, 1355, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1480,7 +1501,7 @@ public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(PanelDisponibilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelDisponibilidad, javax.swing.GroupLayout.DEFAULT_SIZE, 1343, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
         );
         jPanel2Layout.setVerticalGroup(
@@ -1739,26 +1760,39 @@ public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
         try{
             
             Conexion = getConection();
-            ps = Conexion.prepareStatement("INSERT INTO PACIENTES(Codigo,Cedula,NSS,Nombres,Apellidos,Telefono,FechaNacimiento,Historia,Sexo,Tipificacion,Direccion) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            ps = Conexion.prepareStatement("INSERT INTO PACIENTES(Codigo,Cedula,NSS,Nombres,Apellidos,Telefono,FechaNacimiento,Historia,Sexo,Tipificacion,Direccion,Ocupacion,Emergencia) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1,CodigoPaciente.getText());
             ps.setString(2,CedulaPaciente.getText());
             ps.setString(3,NssPaciente.getText());
             ps.setString(4,NombrePaciente.getText());
             ps.setString(5,ApellidoPaciente.getText());
             ps.setString(6,TelefonoPaciente.getText());
-          //ps.setDate(7,Date.valueOf(FechaPaciente.getText()));
+            ps.setString(7,FechaPaciente.getText());
             ps.setString(8,HistorialPaciente.getText());
-            ps.setString(9,CodigoPaciente.getText());
-            ps.setString(10,CodigoPaciente.getText());
-            ps.setString(11,CodigoPaciente.getText());
-            ps.setString(12,CodigoPaciente.getText());
+            ps.setString(9,CbxSexo.getSelectedItem().toString());
+            ps.setString(10,CbxTificacion.getSelectedItem().toString());
+            ps.setString(11,DireccionPaciente.getText());
+            ps.setString(12,OcupacionPaciente.getText());
+            ps.setString(13,EmegenciaPaciente.getText());
+            
+           int res =  ps.executeUpdate();
+           
+           if(res>0){
+               
+               JOptionPane.showMessageDialog(null, "DATOS GUARDADOS. ");
+               Limpiar();
+               
+           }else{
+               JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR. ");
+           }
+            
+            Conexion.close();
             
             
-       
             
         }catch(Exception e){
             
-            
+            JOptionPane.showMessageDialog(null, e);
         }
         
         
@@ -1772,6 +1806,10 @@ public static final String URL = "jdbc:mysql://localhost:3306/db_ars";
         
         
     }//GEN-LAST:event_GuardarPacienteActionPerformed
+
+    private void GuardarArsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarArsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GuardarArsActionPerformed
 
 
     /**

@@ -59,6 +59,7 @@ ResultSet Res;
          NombrePaciente.setText(null);
          ApellidoPaciente.setText(null);
          TelefonoPaciente.setText(null);
+         CelularPaciente.setText(null);
          FechaPaciente.setText(null);
          HistorialPaciente.setText(null);
          DireccionPaciente.setText(null);
@@ -453,6 +454,11 @@ ResultSet Res;
         TxtId.setEnabled(false);
 
         BtnBuscar.setText("Buscar");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelPacienteLayout = new javax.swing.GroupLayout(PanelPaciente);
         PanelPaciente.setLayout(PanelPacienteLayout);
@@ -1760,20 +1766,21 @@ ResultSet Res;
         try{
             
             Conexion = getConection();
-            ps = Conexion.prepareStatement("INSERT INTO PACIENTES(Codigo,Cedula,NSS,Nombres,Apellidos,Telefono,FechaNacimiento,Historia,Sexo,Tipificacion,Direccion,Ocupacion,Emergencia) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            ps = Conexion.prepareStatement("INSERT INTO PACIENTES(Codigo,Cedula,NSS,Nombres,Apellidos,Telefono,Celular,FechaNacimiento,Historia,Sexo,Tipificacion,Direccion,Ocupacion,Emergencia) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1,CodigoPaciente.getText());
             ps.setString(2,CedulaPaciente.getText());
             ps.setString(3,NssPaciente.getText());
             ps.setString(4,NombrePaciente.getText());
             ps.setString(5,ApellidoPaciente.getText());
             ps.setString(6,TelefonoPaciente.getText());
-            ps.setString(7,FechaPaciente.getText());
-            ps.setString(8,HistorialPaciente.getText());
-            ps.setString(9,CbxSexo.getSelectedItem().toString());
-            ps.setString(10,CbxTificacion.getSelectedItem().toString());
-            ps.setString(11,DireccionPaciente.getText());
-            ps.setString(12,OcupacionPaciente.getText());
-            ps.setString(13,EmegenciaPaciente.getText());
+            ps.setString(7,CelularPaciente.getText());
+            ps.setString(8,FechaPaciente.getText());
+            ps.setString(9,HistorialPaciente.getText());
+            ps.setString(10,CbxSexo.getSelectedItem().toString());
+            ps.setString(11,CbxTificacion.getSelectedItem().toString());
+            ps.setString(12,DireccionPaciente.getText());
+            ps.setString(13,OcupacionPaciente.getText());
+            ps.setString(14,EmegenciaPaciente.getText());
             
            int res =  ps.executeUpdate();
            
@@ -1810,6 +1817,56 @@ ResultSet Res;
     private void GuardarArsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarArsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GuardarArsActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        Connection Conexion = null;
+        
+        try{
+            
+            Conexion = getConection();
+            
+            ps = Conexion.prepareStatement("SELECT *FROM PACIENTES WHERE Codigo = ?");
+            ps.setString(1, CodigoPaciente.getText());
+            Res = ps.executeQuery();
+            
+            if(Res.next()){
+                
+                TxtId.setText(Res.getString("idPacientes"));
+                CodigoPaciente.setText(Res.getString("Codigo"));
+                CedulaPaciente.setText(Res.getString("Cedula"));
+                NssPaciente.setText(Res.getString("NSS"));
+                NombrePaciente.setText(Res.getString("Nombres"));
+                ApellidoPaciente.setText(Res.getString("Apellidos"));
+                TelefonoPaciente.setText(Res.getString("Telefono"));
+                CelularPaciente.setText(Res.getString("Celular"));
+                HistorialPaciente.setText(Res.getString("Historia"));
+                FechaPaciente.setText(Res.getString("FechaNacimiento"));
+                CbxSexo.setSelectedItem(Res.getString("Sexo"));
+                CbxTificacion.setSelectedItem(Res.getString("Tipificacion"));
+                DireccionPaciente.setText(Res.getString("Direccion"));
+                OcupacionPaciente.setText(Res.getString("Ocupacion"));
+                EmegenciaPaciente.setText(Res.getString("Emergencia"));
+                
+            }else{
+                
+                JOptionPane.showMessageDialog(null, "No existe paciente asociado a ese codigo");
+                
+                
+            }
+            
+            
+            
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+            
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
 
     /**

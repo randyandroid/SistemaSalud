@@ -20,6 +20,11 @@ public class ConexionBD {
     public static final String USERNAME = "root";
     public static final String PASSWORD = "123456";
     
+    PreparedStatement ps;
+     ResultSet Res;
+    
+     
+    
     
     public static Connection getConection(){
         

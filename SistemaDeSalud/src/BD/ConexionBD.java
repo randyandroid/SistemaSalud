@@ -34,7 +34,7 @@ public class ConexionBD {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Conexion =(Connection) DriverManager.getConnection(URL,USERNAME,PASSWORD); //mando los datos por parametros
-            JOptionPane.showMessageDialog(null,"Conexion Exitosa");
+            System.out.println("Exito");
             
             
         }catch(Exception e){

@@ -191,6 +191,7 @@ ResultSet Res;
         jLabel38 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        TxtIdturno = new javax.swing.JTextField();
         PanelDisponibilidad = new javax.swing.JPanel();
         CodigoDisponibilidad = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
@@ -1090,6 +1091,13 @@ ResultSet Res;
         jButton1.setText("REFRESCAR");
 
         jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        TxtIdturno.setEditable(false);
 
         javax.swing.GroupLayout PanelTurnoLayout = new javax.swing.GroupLayout(PanelTurno);
         PanelTurno.setLayout(PanelTurnoLayout);
@@ -1154,7 +1162,9 @@ ResultSet Res;
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(PanelTurnoLayout.createSequentialGroup()
                                 .addGap(41, 41, 41)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TxtIdturno, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(1384, Short.MAX_VALUE))
         );
         PanelTurnoLayout.setVerticalGroup(
@@ -1164,7 +1174,8 @@ ResultSet Res;
                 .addGroup(PanelTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(PacienteCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(TxtIdturno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
@@ -1926,6 +1937,44 @@ ResultSet Res;
         
     }//GEN-LAST:event_GuardarTurnoActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        Connection Conexion = null;
+
+        try{
+
+            Conexion = getConection();
+
+            ps = Conexion.prepareStatement("SELECT *FROM Turnos WHERE Codigo = ?");
+            ps.setString(1, PacienteCodigo.getText());
+            Res = ps.executeQuery();
+
+            if(Res.next()){
+
+                TxtIdturno.setText(Res.getString("idTurnos"));
+                PacienteCodigo.setText(Res.getString("Codigo"));
+                NumeroTurno.setText(Res.getString("Numero"));
+                NombrePac.setText(Res.getString("Nombre"));
+                MedicoTurno.setText(Res.getString("Medico"));
+                EspecialidadTurno.setText(Res.getString("Especialidad"));
+                FechaTurno.setText(Res.getString("Fecha"));
+                HoraTurno.setText(Res.getString("Hora"));
+                ValorTurno.setText(Res.getString("Monto"));
+                
+            }else{
+
+                JOptionPane.showMessageDialog(null, "No existe Medico asociado a ese codigo");
+
+            }
+
+        }catch(Exception e){
+
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2035,6 +2084,7 @@ ResultSet Res;
     private javax.swing.JTextField TurnosMed;
     private javax.swing.JTextField TxtId;
     private javax.swing.JTextField TxtIdMed;
+    private javax.swing.JTextField TxtIdturno;
     private javax.swing.JTextField ValorDisponibilidad;
     private javax.swing.JTextField ValorTurno;
     private javax.swing.JRadioButton ViernesMedico;
